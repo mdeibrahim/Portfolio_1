@@ -43,8 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowHeight = window.innerHeight;
             
             if (elementPosition < windowHeight - 100) {
-                const animationClass = element.classList[1];
-                element.classList.add(animationClass);
+                element.classList.forEach(cls => {
+                    if (cls.startsWith('animate__') && cls !== 'animate__animated') {
+                        element.classList.add(cls);
+                    }
+                });
             }
         });
     };
@@ -73,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
     // Form submission
-    const contactForm = document.querySelector('.contact_form');
+    const contactForm = document.querySelector('.contact_form_inner');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -92,5 +95,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 2000);
             }, 1500);
         });
+    }
+
+    // Typewriter effect for the name
+    const typewriterElement = document.getElementById('typewriter-name');
+    if (typewriterElement) {
+        const fullText = typewriterElement.textContent;
+        typewriterElement.textContent = '';
+        let i = 0;
+        function typeWriter() {
+            if (i < fullText.length) {
+                typewriterElement.textContent += fullText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100); // Adjust speed here (ms)
+            }
+        }
+        typeWriter();
     }
 });

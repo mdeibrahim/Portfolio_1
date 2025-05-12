@@ -49,7 +49,15 @@ nav {
     gap: 30px;
 }
 
-.nav-item {
+.menu-container ul.nav-list {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-container ul.nav-list .nav-item {
     list-style: none;
     font-size: 18px;
     position: relative;
@@ -107,11 +115,10 @@ nav {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     background: linear-gradient(to right, #ff01bb, #FE7743);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glow 2s ease-in-out infinite alternate;
 }
-
-
 
 @keyframes glow {
     from {
@@ -596,7 +603,7 @@ nav {
     transform: translateY(-5px);
 }
 
-.contact_form {
+.contact_form_inner {
     max-width: 800px;
     margin: 0 auto;
     display: grid;
@@ -604,8 +611,8 @@ nav {
     gap: 20px;
 }
 
-.contact_form input,
-.contact_form textarea {
+.contact_form_inner input,
+.contact_form_inner textarea {
     padding: 15px;
     border-radius: 8px;
     border: none;
@@ -615,20 +622,13 @@ nav {
     transition: all 0.3s ease;
 }
 
-.contact_form input:focus,
-.contact_form textarea:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(255, 1, 187, 0.5);
-}
-
-.contact_form textarea {
+.contact_form_inner textarea {
     grid-column: span 2;
     height: 150px;
     resize: none;
 }
 
-.submit-btn {
+.contact_form_inner .submit-btn {
     grid-column: span 2;
     padding: 15px;
     background: linear-gradient(to right, #ff01bb, #FE7743);

@@ -20,10 +20,12 @@
             </div>
 
             <div class="menu-container">
-                <li class="nav-item">Home</li>
-                <li class="nav-item">About</li>
-                <li class="nav-item">Services</li>
-                <li class="nav-item">Contact</li>
+                <ul class="nav-list">
+                    <li class="nav-item">Home</li>
+                    <li class="nav-item">About</li>
+                    <li class="nav-item">Services</li>
+                    <li class="nav-item">Contact</li>
+                </ul>
             </div>
         </nav>
         <section class="banner">
@@ -42,7 +44,7 @@
                         </a>
                     </button>
                     <button class="btn b2 pulse">
-                        <a href="mailto:s21502003689@nu.ac.bd" target="blank"
+                        <a href="mailto:s21502003689@nu.ac.bd" target="_blank"
                             style="color: white; text-decoration: none;">
                             <i class="fas fa-envelope"></i> Contact me
                         </a>
@@ -163,18 +165,20 @@
                         <p><i class="fas fa-envelope"></i> s21502003689@nu.ac.bd</p>
                     </div>
                     <div class="social-media">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
             <div class="contact_form animate__animated animate__fadeInUp">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button class="submit-btn">Submit <i class="fas fa-paper-plane"></i></button>
+                <form class="contact_form_inner" action="#" method="post" autocomplete="off">
+                    <input type="text" placeholder="Name" name="name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <textarea placeholder="Your Message" name="message" required></textarea>
+                    <button class="submit-btn" type="submit">Submit <i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </section>
     </main>
