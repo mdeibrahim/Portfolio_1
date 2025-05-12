@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- keep changes -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Eibrahim Molla - Python Developer</title>
+    <title>Md Eibrahim Molla - Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
@@ -21,32 +20,36 @@
 
             <div class="menu-container">
                 <ul class="nav-list">
-                    <li class="nav-item">Home</li>
-                    <li class="nav-item">About</li>
-                    <li class="nav-item">Services</li>
-                    <li class="nav-item">Contact</li>
+                    <li class="nav-item" data-section="home">Home</li>
+                    <li class="nav-item" data-section="about">About</li>
+                    <li class="nav-item" data-section="Academic">Academic</li>
+                    <li class="nav-item" data-section="skills">Skills</li>
+                    <li class="nav-item" data-section="services">Services</li>
+                    <li class="nav-item" data-section="projects">Projects</li>
+                    <li class="nav-item" data-section="contact">Contact</li>
                 </ul>
             </div>
+            <!-- <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div> -->
         </nav>
-        <section class="banner">
+
+        <section id="home" class="banner">
             <div class="banner-left animate__animated animate__fadeInLeft">
                 <h1 class="name" id="typewriter-name">Md Eibrahim Molla</h1>
-                <h4 class="title">Python Developer, Problem Solver</h4>
-                <p class="about">I'm a Python developer with a passion for problem-solving and a strong
-                    foundation in data structures and algorithms. I enjoy
-                    tackling complex challenges and finding efficient
-                    solutions.</p><br>
+                <h4 class="title">Full Stack Developer</h4>
+                <p class="about">I'm a passionate developer with expertise in Python, Django, and modern web
+                    technologies. I love creating efficient, scalable solutions and solving complex problems.</p>
                 <div class="button-group">
                     <button class="btn b1 pulse">
                         <a href="documents/Md_Eibrahim_CV.pdf" download="Eibrahim's_CV.pdf"
-                            style="color: white; text-decoration: none;">
-                            <i class="fas fa-download"></i> My CV
+                            style="text-decoration: none;">
+                            <i class="fas fa-download"></i> Download CV
                         </a>
                     </button>
                     <button class="btn b2 pulse">
-                        <a href="mailto:s21502003689@nu.ac.bd" target="_blank"
-                            style="color: white; text-decoration: none;">
-                            <i class="fas fa-envelope"></i> Contact me
+                        <a href="mailto:s21502003689@nu.ac.bd" style="text-decoration: none;">
+                            <i class="fas fa-envelope"></i> Email
                         </a>
                     </button>
                 </div>
@@ -58,133 +61,284 @@
             </div>
         </section>
     </header>
+
     <main>
-        <section class="service_section">
-            <h1 class="title animate__animated animate__fadeIn">My Services</h1>
-            <div class="services">
-                <div class="service-card develop s1">
-                    <div class="card-front">
-                        <h1 class="st">Web Development</h1>
-                    </div>
-                    <div class="card-back">
-                        <p class="text">Web development is the process of creating and maintaining websites or web
-                            applications. It involves front-end development, which focuses on the layout, design, and
-                            user experience, and back-end
-                            development, which handles server-side logic, databases, and application functionality.</p>
-                        <button class="s1">Details <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                <div class="service-card develop python">
-                    <div class="card-front">
-                        <h1 class="st">Python Development</h1>
-                    </div>
-                    <div class="card-back">
-                        <p class="text">Python development involves using the Python programming language to create
-                            software, websites, automation scripts, data analysis tools, and more. Python is known for
-                            its simplicity,
-                            readability, and vast library support, making it ideal for beginners and professionals
-                            alike.</p>
-                        <button class="s1">Details <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                <div class="service-card develop django">
-                    <div class="card-front">
-                        <h1 class="st">Django</h1>
-                    </div>
-                    <div class="card-back">
-                        <p class="text">Django is a high-level Python web framework that enables rapid development of
-                            secure and maintainable websites. It follows the "batteries-included" philosophy and
-                            provides an admin panel, ORM, authentication, and more out of the box, allowing developers
-                            to focus on writing apps.</p>
-                        <button class="s1">Details <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                <div class="service-card develop soft">
-                    <div class="card-front">
-                        <h1 class="st">Software Development</h1>
-                    </div>
-                    <div class="card-back">
-                        <p class="text">Software development is the process of conceiving, specifying, designing,
-                            programming, documenting, testing, and bug fixing involved in creating and maintaining
-                            applications, frameworks, or other software components.</p>
-                        <button class="s1">Details <i class="fas fa-arrow-right"></i></button>
+
+        <section id="about" class="about_section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a dedicated Full Stack Developer with a strong foundation in both front-end and back-end
+                            technologies. My journey in software development has equipped me with the skills to create
+                            robust, scalable applications.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">1+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">30+</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="project_section">
-            <div class="project_content">
-                <h1 class="title animate__animated animate__fadeIn">My Projects</h1>
+        <section id="skills" class="skills_section">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Python</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>C++</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-js"></i>
+                        <h3>JavaScript</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML5</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS3</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h3>SQL</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="service_section">
+            <div class="container">
+                <h2 class="section-title">My Services</h2>
+                <div class="services">
+                    <div class="service-card develop s1">
+                        <div class="card-front cd1"
+                            style="background-image: url('image/web.jpeg'); background-size: cover; background-position: center;">
+                            <h3>Web Development</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Creating responsive, modern websites with clean code and optimal performance.</p>
+                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="service-card develop python">
+                        <div class="card-front cd2"
+                            style="background-image: url('image/python.jpg'); background-size: cover; background-position: center;">
+                            <h3>Python Development</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Building robust Python applications, automation scripts, and data analysis solutions.</p>
+                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="service-card develop django">
+                        <div class="card-front cd3"
+                            style="background-image: url('image/django.jpg'); background-size: cover; background-position: center;">
+                            <h3>Django Development</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Developing scalable web applications using Django framework with best practices.</p>
+                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="service-card develop soft">
+                        <div class="card-front cd4"
+                            style="background-image: url('image/soft.jpg'); background-size: cover; background-position: center;">
+                            <h3>Software Development</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>Creating custom software solutions tailored to your business needs.</p>
+                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="project_section">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
                 <div class="projects">
                     <div class="project-card p1">
                         <div class="project-content">
-                            <h1 class="project_title pt1">Restaurant Management</h1>
-                            <p class="project-desc">A comprehensive system for managing restaurant operations including
-                                orders, inventory, and staff.</p>
+                            <h3>Restaurant Management</h3>
+                            <p>A comprehensive system for managing restaurant operations including orders, inventory,
+                                and staff.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Django</span>
+                                <span>SQLite</span>
+                            </div>
                             <button class="project-btn">View Project</button>
                         </div>
                     </div>
-                    <div class="project-card p1 p2">
+                    <div class="project-card p2">
                         <div class="project-content">
-                            <h1 class="project_title pt2">Ride Sharing</h1>
-                            <p class="project-desc">A platform connecting drivers with passengers for efficient
-                                transportation solutions.</p>
+                            <h3>Ride Sharing</h3>
+                            <p>A platform connecting drivers with passengers for efficient transportation solutions.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Django</span>
+                                <span>PostgreSQL</span>
+                            </div>
                             <button class="project-btn">View Project</button>
                         </div>
                     </div>
-                    <div class="project-card p1 p3">
+                    <div class="project-card p3">
                         <div class="project-content">
-                            <h1 class="project_title pt3">School Management</h1>
-                            <p class="project-desc">Complete system for managing student records, grades, and school
-                                administration.</p>
+                            <h3>School Management</h3>
+                            <p>Complete system for managing student records, grades, and school administration.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Django</span>
+                                <span>MySQL</span>
+                            </div>
                             <button class="project-btn">View Project</button>
                         </div>
                     </div>
-                    <div class="project-card p1 p4">
+                    <div class="project-card p4">
                         <div class="project-content">
-                            <h1 class="project_title pt4">Hospital Management</h1>
-                            <p class="project-desc">Integrated solution for patient records, appointments, and hospital
-                                operations.</p>
+                            <h3>Hospital Management</h3>
+                            <p>Integrated solution for patient records, appointments, and hospital operations.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Django</span>
+                                <span>PostgreSQL</span>
+                            </div>
                             <button class="project-btn">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-card p5">
+                        <div class="project-content">
+                            <h3>Result Calculator</h3>
+                            <p>Integrated solution for patient records, appointments, and hospital operations.</p>
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <button class="project-btn"><a href="https://mdeibrahim.github.io/Result_calculator/"
+                                    target="_blank" style="text-decoration: none; color: inherit;">View
+                                    Project</a></button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact_section">
-            <div class="social">
-                <div class="ask animate__animated animate__fadeInLeft">
-                    <p class="contact-heading">DO YOU HAVE ANY PROJECT<br>TO DISCUSS?</p>
-                    <p class="contact-sub">GET IN TOUCH</p>
-                </div>
-                <div class="contact animate__animated animate__fadeInRight">
-                    <div class="contact-method">
-                        <p><i class="fas fa-phone"></i> +880 1234 567890</p>
-                        <p><i class="fas fa-envelope"></i> s21502003689@nu.ac.bd</p>
+        <section id="contact" class="contact_section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>College Gate, Tongi, Gazipur</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>mmeibrahim505@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+880 1770295204</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="social-media">
+                    <form class="contact_form_inner" action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" name="message" required></textarea>
+                        </div>
+                        <button class="submit-btn" type="submit">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Md Eibrahim Molla</h3>
+                    <p>Full Stack Developer passionate about creating efficient and scalable solutions.</p>
+                    <div class="social-icons">
                         <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="contact_form animate__animated animate__fadeInUp">
-                <form class="contact_form_inner" action="#" method="post" autocomplete="off">
-                    <input type="text" placeholder="Name" name="name" required>
-                    <input type="email" placeholder="Email" name="email" required>
-                    <textarea placeholder="Your Message" name="message" required></textarea>
-                    <button class="submit-btn" type="submit">Submit <i class="fas fa-paper-plane"></i></button>
-                </form>
+            <div class="copyright">
+                <p>&copy; 2024 Md Eibrahim Molla. All Rights Reserved.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2023 Md Eibrahim Molla. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

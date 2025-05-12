@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+    
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-theme');
+        const icon = themeToggle.querySelector('i');
+        icon.classList.toggle('fa-moon');
+        icon.classList.toggle('fa-sun');
+    });
+
     // Navbar scroll effect
     const nav = document.querySelector('.sticky-nav');
     
@@ -10,20 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
-
     // Smooth scrolling for navigation
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.textContent.toLowerCase();
-            let targetElement;
-            
-            if (targetId === 'home') {
-                targetElement = document.querySelector('.banner');
-            } else {
-                targetElement = document.querySelector(`.${targetId}_section`);
-            }
+            const targetId = this.getAttribute('data-section');
+            const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
                 window.scrollTo({
@@ -55,46 +58,101 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Run once on page load
 
-    // 3D tilt effect for project cards
-    // const projectCards = document.querySelectorAll('.project-card');
+    // Skill progress animation
+    const skillCards = document.querySelectorAll('.skill-card');
     
-    // projectCards.forEach(card => {
-    //     card.addEventListener('mousemove', (e) => {
-    //         const xAxis = (window.innerWidth / 2- e.pageX) / 15;
-    //         const yAxis = (window.innerHeight /2 - e.pageY) / 15;
-    //         // card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-    //     });
-        
-    //     card.addEventListener('mouseenter', () => {
-    //         card.style.transition = 'none';
-    //     });
-        
-    //     card.addEventListener('mouseleave', () => {
-    //         card.style.transition = 'all 0.5s ease';
-    //         // card.style.transform = 'rotateY(0deg) rotateX(0deg)';
-    //     });
-    // });
+    const animateSkills = () => {
+        skillCards.forEach(card => {
+            const progress = card.querySelector('.skill-progress');
+            const cardPosition = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (cardPosition < windowHeight - 100) {
+                progress.style.width = progress.style.width;
+            }
+        });
+    };
 
-    // Form submission
+    window.addEventListener('scroll', animateSkills);
+    animateSkills(); // Run once on page load
+
+    // Project cards hover effect
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Form submission with validation
     const contactForm = document.querySelector('.contact_form_inner');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const submitBtn = this.querySelector('.submit-btn');
             
+            // Basic form validation
+            const name = this.querySelector('input[name="name"]').value.trim();
+            const email = this.querySelector('input[name="email"]').value.trim();
+            const subject = this.querySelector('input[name="subject"]').value.trim();
+            const message = this.querySelector('textarea[name="message"]').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('.submit-btn');
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
             // Simulate form submission
             setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                setTimeout(() => {
-                    submitBtn.innerHTML = 'Submit <i class="fas fa-paper-plane"></i>';
-                    submitBtn.disabled = false;
-                    this.reset();
-                }, 2000);
+                showNotification('Message sent successfully!', 'success');
+                submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                submitBtn.disabled = false;
+                this.reset();
             }, 1500);
         });
+    }
+
+    // Notification system
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <span>${message}</span>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 100);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    // Email validation helper
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     // Typewriter effect for the name
@@ -103,13 +161,57 @@ document.addEventListener('DOMContentLoaded', function() {
         const fullText = typewriterElement.textContent;
         typewriterElement.textContent = '';
         let i = 0;
+        
         function typeWriter() {
             if (i < fullText.length) {
                 typewriterElement.textContent += fullText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100); // Adjust speed here (ms)
+                setTimeout(typeWriter, 100);
             }
         }
+        
         typeWriter();
     }
+
+    // Add CSS for notifications
+    const style = document.createElement('style');
+    style.textContent = `
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: white;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .notification.error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .light-theme {
+            --dark-bg: #ffffff;
+            --text-color: #333333;
+            --card-bg: rgba(0, 0, 0, 0.05);
+        }
+    `;
+    document.head.appendChild(style);
 });
