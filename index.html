@@ -7,83 +7,350 @@
     <title>Md Eibrahim Molla - Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="project.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff01bb',
+                        secondary: '#FE7743',
+                        dark: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+            }
+            .bg-gradient {
+                @apply bg-gradient-to-r from-primary to-secondary;
+            }
+            .bg-overlay {
+                @apply relative before:absolute before:inset-0 before:bg-black/80 before:z-0;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 1.5rem;
+        }
+
+        #mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        /* Custom Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            .nav-menu {
+                padding: 0.25rem;
+            }
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .section-padding {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-dark text-white font-poppins">
     <header>
-        <nav class="sticky-nav">
-            <div class="logo-container">
-                <img class="logo" src="image/logo.jpg" alt="Logo">
+        <nav class="fixed top-0 left-0 w-full bg-black/90 backdrop-blur-md z-50">
+            <div class="container mx-auto px-3 md:px-6 py-2 md:py-3 flex justify-between items-center">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" src="image/logo.jpg" alt="Logo">
             </div>
 
-            <div class="menu-container">
-                <ul class="nav-list">
-                    <li class="nav-item" data-section="home">Home</li>
-                    <li class="nav-item" data-section="about">About</li>
-                    <li class="nav-item" data-section="Academic">Academic</li>
-                    <li class="nav-item" data-section="skills">Skills</li>
-                    <li class="nav-item" data-section="services">Services</li>
-                    <li class="nav-item" data-section="projects">Projects</li>
-                    <li class="nav-item" data-section="contact">Contact</li>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <ul class="flex items-center border border-gray-600 rounded-full px-8 py-3 space-x-8">
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="home">Home</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="about">About</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="Academic">Academic</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="skills">Skills</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="services">Services</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="projects">Projects</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="contact">Contact</li>
                 </ul>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white hover:text-primary transition-colors" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <!-- <div class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div> -->
         </nav>
 
-        <section id="home" class="banner">
-            <div class="banner-left animate__animated animate__fadeInLeft">
-                <h1 class="name" id="typewriter-name">Md Eibrahim Molla</h1>
-                <h4 class="title">Full Stack Developer</h4>
-                <p class="about">I'm a passionate developer with expertise in Python, Django, and modern web
-                    technologies. I love creating efficient, scalable solutions and solving complex problems.</p>
-                <div class="button-group">
-                    <button class="btn b1 pulse">
-                        <a href="documents/Md_Eibrahim_CV.pdf" download="Eibrahim's_CV.pdf"
-                            style="text-decoration: none;">
-                            <i class="fas fa-download"></i> Download CV
-                        </a>
-                    </button>
-                    <button class="btn b2 pulse">
-                        <a href="mailto:s21502003689@nu.ac.bd" style="text-decoration: none;">
-                            <i class="fas fa-envelope"></i> Email
-                        </a>
-                    </button>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu">
+            <div class="flex justify-between items-center mb-8">
+                <div class="w-12 h-12 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="image/logo.jpg" alt="Logo">
                 </div>
+                <button class="text-white hover:text-primary transition-colors" id="close-menu-button">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
             </div>
-            <div class="banner-right animate__animated animate__fadeInRight">
-                <div class="profile-container">
-                    <img class="profile_logo" src="image/profile.png" alt="profile photo">
+            <ul class="space-y-6">
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="home">Home</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="about">About</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="Academic">Academic</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="skills">Skills</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="services">Services</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="projects">Projects</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="contact">Contact</li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay"></div>
+
+        <section id="home" class="min-h-screen flex items-center justify-between px-3 md:px-6 py-16 md:py-24 bg-cover bg-center bg-fixed" 
+                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image/bg_banner.png');">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+                <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gradient" id="typewriter-name">Md Eibrahim Molla</h1>
+                    <h4 class="text-2xl md:text-3xl font-semibold mb-4 text-secondary">Full Stack Developer</h4>
+                    <p class="text-gray-300 mb-8">I'm a passionate developer with expertise in Python, Django, and modern web
+                        technologies. I love creating efficient, scalable solutions and solving complex problems.</p>
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://github.com/mdeibrahim" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="documents/Md_Eibrahim_CV.pdf" download="Eibrahim's_CV.pdf"
+                           class="bg-gradient text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity">
+                            <i class="fas fa-download mr-2"></i> Download CV
+                        </a>
+                        <a href="mailto:s21502003689@nu.ac.bd" 
+                           class="border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
+                            <i class="fas fa-envelope mr-2"></i> Email
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 animate__animated animate__fadeInRight">
+                    <div class="relative w-96 h-96 mx-auto">
+                        <img class="w-full h-full object-cover rounded-full border-4 border-white/10 shadow-lg shadow-primary/30 hover:scale-105 transition-transform duration-300" 
+                             src="image/profile.png" alt="profile photo">
+            </div>
                 </div>
             </div>
         </section>
     </header>
 
     <main>
-
-        <section id="about" class="about_section">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>I am a dedicated Full Stack Developer with a strong foundation in both front-end and back-end
+        <section id="about" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
+                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+            <div class="container mx-auto px-3 md:px-6 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">About Me</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                        <p class="text-gray-200 mb-8 text-lg">I am a dedicated Full Stack Developer with a strong foundation in both front-end and back-end
                             technologies. My journey in software development has equipped me with the skills to create
                             robust, scalable applications.</p>
-                        <div class="stats">
-                            <div class="stat-item">
-                                <span class="stat-number">1+</span>
-                                <span class="stat-label">Years Experience</span>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="text-center">
+                                <span class="block text-3xl font-bold text-primary mb-2">1+</span>
+                                <span class="text-gray-300">Years Experience</span>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Projects Completed</span>
+                            <div class="text-center">
+                                <span class="block text-3xl font-bold text-primary mb-2">50+</span>
+                                <span class="text-gray-300">Projects Completed</span>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">30+</span>
-                                <span class="stat-label">Happy Clients</span>
+                            <div class="text-center">
+                                <span class="block text-3xl font-bold text-primary mb-2">30+</span>
+                                <span class="text-gray-300">Happy Clients</span>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
+                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+            <div class="container mx-auto px-3 md:px-6 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Technologies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
+                    <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
+                        <h4 class="text-sm mb-4 text-white">Front End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
+                        <div class="grid grid-cols-4 gap-4 mb-6">
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=html" alt="HTML5" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">HTML5</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=css" alt="CSS3" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">CSS3</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">JavaScript</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=react" alt="React" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">React</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">Bootstrap</p>
+                    </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">Tailwind</p>
+                    </div>
+                </div>
+                    </div>
+                    <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
+                        <h4 class="text-sm mb-4 text-white">Back End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
+                        <div class="grid grid-cols-4 gap-4 mb-6">
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=python" alt="Python" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">Python</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=django" alt="Django" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">Django</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">Node</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://skillicons.dev/icons?i=postgresql" alt="postgresql" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">postgre</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
+                 style="background-image: linear-gradient( rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+            <div class="container mx-auto px-3 md:px-6 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+                    <div class="group relative h-100 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
+                             style="background-image: url('image/web.jpeg');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-8">Web Development</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+                                    Creating responsive, modern websites with clean code and optimal performance.
+                                </p>
+                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group relative h-80 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
+                             style="background-image: url('image/python.jpg');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-8">Python Development</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+                                    Building robust Python applications, automation scripts, and data analysis solutions.
+                                </p>
+                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group relative h-80 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
+                             style="background-image: url('image/django.jpg');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-8">Django Development</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+                                    Developing scalable web applications using Django framework with best practices.
+                                </p>
+                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group relative h-80 rounded-xl overflow-hidden">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
+                             style="background-image: url('image/soft.jpg');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-8">Software Development</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
+                                    Creating custom software solutions tailored to your business needs.
+                                </p>
+                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -91,251 +358,164 @@
             </div>
         </section>
 
-        <section id="skills" class="skills_section">
-            <div class="container">
-                <h2 class="section-title">My Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <i class="fab fa-python"></i>
-                        <h3>Python</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
+        <section id="projects" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
+                 style="background-image: url('image/project_bg2.jpg');">
+            <div class="container mx-auto px-3 md:px-6 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/restaurant.jpg');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-4">Restaurant Management</h3>
+                                <p class="mb-4">A comprehensive system for managing restaurant operations including orders, inventory, and staff.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">SQLite</span>
+                                </div>
+                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
+                                    View Project
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="fas fa-code"></i>
-                        <h3>C++</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
+                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/ride.jpg');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-4">Ride Sharing</h3>
+                                <p class="mb-4">A platform connecting drivers with passengers for efficient transportation solutions.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">PostgreSQL</span>
+                                </div>
+                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
+                                    View Project
+                                </button>
+                            </div>
+                </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="fab fa-js"></i>
-                        <h3>JavaScript</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-html5"></i>
-                        <h3>HTML5</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fab fa-css3-alt"></i>
-                        <h3>CSS3</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-database"></i>
-                        <h3>SQL</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
+                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/school_manage.webp');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold mb-4">School Management</h3>
+                                <p class="mb-4">Complete system for managing student records, grades, and school administration.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
+                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">MySQL</span>
+                                </div>
+                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
+                                    View Project
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="service_section">
-            <div class="container">
-                <h2 class="section-title">My Services</h2>
-                <div class="services">
-                    <div class="service-card develop s1">
-                        <div class="card-front cd1"
-                            style="background-image: url('image/web.jpeg'); background-size: cover; background-position: center;">
-                            <h3>Web Development</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>Creating responsive, modern websites with clean code and optimal performance.</p>
-                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="service-card develop python">
-                        <div class="card-front cd2"
-                            style="background-image: url('image/python.jpg'); background-size: cover; background-position: center;">
-                            <h3>Python Development</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>Building robust Python applications, automation scripts, and data analysis solutions.</p>
-                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="service-card develop django">
-                        <div class="card-front cd3"
-                            style="background-image: url('image/django.jpg'); background-size: cover; background-position: center;">
-                            <h3>Django Development</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>Developing scalable web applications using Django framework with best practices.</p>
-                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <div class="service-card develop soft">
-                        <div class="card-front cd4"
-                            style="background-image: url('image/soft.jpg'); background-size: cover; background-position: center;">
-                            <h3>Software Development</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>Creating custom software solutions tailored to your business needs.</p>
-                            <button class="s1">Learn More <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="projects" class="project_section">
-            <div class="container">
-                <h2 class="section-title">My Projects</h2>
-                <div class="projects">
-                    <div class="project-card p1">
-                        <div class="project-content">
-                            <h3>Restaurant Management</h3>
-                            <p>A comprehensive system for managing restaurant operations including orders, inventory,
-                                and staff.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>Django</span>
-                                <span>SQLite</span>
+        <section id="contact" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+            <div class="container mx-auto px-3 md:px-6 relative z-10">
+            
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">GET IN TOUCH</h2>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div class="space-y-8 bg-black/50 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
                             </div>
-                            <button class="project-btn">View Project</button>
-                        </div>
-                    </div>
-                    <div class="project-card p2">
-                        <div class="project-content">
-                            <h3>Ride Sharing</h3>
-                            <p>A platform connecting drivers with passengers for efficient transportation solutions.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>Django</span>
-                                <span>PostgreSQL</span>
-                            </div>
-                            <button class="project-btn">View Project</button>
-                        </div>
-                    </div>
-                    <div class="project-card p3">
-                        <div class="project-content">
-                            <h3>School Management</h3>
-                            <p>Complete system for managing student records, grades, and school administration.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>Django</span>
-                                <span>MySQL</span>
-                            </div>
-                            <button class="project-btn">View Project</button>
-                        </div>
-                    </div>
-                    <div class="project-card p4">
-                        <div class="project-content">
-                            <h3>Hospital Management</h3>
-                            <p>Integrated solution for patient records, appointments, and hospital operations.</p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>Django</span>
-                                <span>PostgreSQL</span>
-                            </div>
-                            <button class="project-btn">View Project</button>
-                        </div>
-                    </div>
-                    <div class="project-card p5">
-                        <div class="project-content">
-                            <h3>Result Calculator</h3>
-                            <p>Integrated solution for patient records, appointments, and hospital operations.</p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <button class="project-btn"><a href="https://mdeibrahim.github.io/Result_calculator/"
-                                    target="_blank" style="text-decoration: none; color: inherit;">View
-                                    Project</a></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact_section">
-            <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <h3>Location</h3>
-                                <p>College Gate, Tongi, Gazipur</p>
+                                <h3 class="text-xl font-semibold mb-2 text-white">Location</h3>
+                                <p class="text-white text-lg font-medium">College Gate, Tongi, Gazipur</p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
                             <div>
-                                <h3>Email</h3>
-                                <p>mmeibrahim505@gmail.com</p>
+                                <h3 class="text-xl font-semibold mb-2 text-white">Email</h3>
+                                <p class="text-white text-lg font-medium">mmeibrahim505@gmail.com</p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
                             <div>
-                                <h3>Phone</h3>
-                                <p>+880 1770295204</p>
+                                <h3 class="text-xl font-semibold mb-2 text-white">Phone</h3>
+                                <p class="text-white text-lg font-medium">+880 1770295204</p>
                             </div>
                         </div>
                     </div>
-                    <form class="contact_form_inner" action="#" method="post">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" name="name" required>
+                    <form class="bg-black/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10" id="contactForm">
+                        <div class="space-y-6">
+                            <div>
+                                <input type="text" placeholder="Your Name" required
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" required
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors">
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Subject" required
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors">
+                            </div>
+                            <div>
+                                <textarea placeholder="Your Message" required rows="4"
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary text-white py-3 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center text-lg font-medium">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" name="message" required></textarea>
-                        </div>
-                        <button class="submit-btn" type="submit">
-                            Send Message <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Md Eibrahim Molla</h3>
-                    <p>Full Stack Developer passionate about creating efficient and scalable solutions.</p>
-                    <div class="social-icons">
-                        <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <footer class="bg-black/50 py-6 md:py-8">
+        <div class="container mx-auto px-3 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-gradient">Md Eibrahim Molla</h3>
+                    <p class="text-gray-400">Full Stack Developer passionate about creating efficient and scalable solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/mdeibrahim" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="border-t border-gray-800 mt-6 md:mt-8 pt-4 md:pt-6 text-center text-gray-400">
                 <p>&copy; 2024 Md Eibrahim Molla. All Rights Reserved.</p>
             </div>
         </div>
