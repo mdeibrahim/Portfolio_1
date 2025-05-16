@@ -74,21 +74,36 @@
         }
 
         /* Custom Media Queries */
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             .container {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-            .nav-menu {
-                padding: 0.25rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
             .section-padding {
                 padding-top: 2rem;
                 padding-bottom: 2rem;
             }
+            .card-section {
+                gap: 1.5rem;
+            }
+            .card-section > div {
+                width: 100%;
+            }
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            .text-2xl {
+                font-size: 1.25rem;
+            }
         }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
+        @media (min-width: 641px) and (max-width: 768px) {
             .container {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
@@ -97,9 +112,15 @@
                 padding-top: 3rem;
                 padding-bottom: 3rem;
             }
+            .card-section > div {
+                width: calc(50% - 1rem);
+            }
+            .grid-cols-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
-        @media (min-width: 1025px) {
+        @media (min-width: 769px) and (max-width: 1024px) {
             .container {
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -107,6 +128,45 @@
             .section-padding {
                 padding-top: 4rem;
                 padding-bottom: 4rem;
+            }
+            .card-section > div {
+                width: calc(33.333% - 1.5rem);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .container {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+            .section-padding {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+            .card-section > div {
+                width: calc(25% - 1.5rem);
+            }
+        }
+
+        /* Additional Responsive Fixes */
+        @media (max-width: 768px) {
+            .nav-menu {
+                padding: 0.5rem;
+            }
+            #home .flex-col {
+                gap: 2rem;
+            }
+            #home .w-full {
+                text-align: center;
+            }
+            #home .flex {
+                justify-content: center;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -116,9 +176,10 @@
     <header>
         <nav class="fixed top-0 left-0 w-full bg-black/90 backdrop-blur-md z-50">
             <div class="container mx-auto px-3 md:px-6 py-2 md:py-3 flex justify-between items-center">
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden shadow-lg shadow-pink-500/50 hover:scale-110">
-                    <img class="w-full h-full object-cover  transition-transform duration-300"
-                        src="image/logo.jpg" alt="Logo">
+                <div
+                    class="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden shadow-lg shadow-pink-500/50 hover:scale-110 transition-transform duration-300 cursor-pointer">
+                    <a href="index.html"><img class="w-full h-full object-cover transition-transform duration-300"
+                            src="image/logo.jpg" alt="Logo"></a>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -184,7 +245,8 @@
             style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image/bg_banner.png');">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
                 <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gradient" id="typewriter-name">Md Eibrahim Molla</h1>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gradient" id="typewriter-name">Md Eibrahim Molla
+                    </h1>
                     <h4 class="text-2xl md:text-3xl font-semibold mb-4 text-secondary">Full Stack Developer</h4>
                     <p class="text-gray-300 mb-8">I'm a passionate developer with expertise in Python, Django, and
                         modern web
@@ -263,9 +325,10 @@
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Technologies</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
-                    <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
-                        <h4 class="text-sm mb-4 text-white">Front End &nbsp;&nbsp;&nbsp;&nbsp; <i
-                                class="fas fa-arrow-right text-primary"></i></h4>
+                    <div
+                        class="bg-white/0 border-2 border-white/10 rounded-xl p-6 hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                        <h4 class="text-sm mb-4 text-white border-2 border-white/10 rounded-full px-4 py-2 w-fit">Front
+                            End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
                         <div class="grid grid-cols-4 gap-4 mb-6">
                             <div class="text-center">
                                 <img src="https://skillicons.dev/icons?i=html" alt="HTML5" class="w-12 h-12 mx-auto">
@@ -295,9 +358,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
-                        <h4 class="text-sm mb-4 text-white">Back End &nbsp;&nbsp;&nbsp;&nbsp; <i
-                                class="fas fa-arrow-right text-primary"></i></h4>
+                    <div
+                        class="bg-white/0 border-2 border-white/10 rounded-xl p-6 hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                        <h4 class="text-sm mb-4 text-white border-2 border-white/10 rounded-full px-4 py-2 w-fit">Back
+                            End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
                         <div class="grid grid-cols-4 gap-4 mb-6">
                             <div class="text-center">
                                 <img src="https://skillicons.dev/icons?i=python" alt="Python" class="w-12 h-12 mx-auto">
@@ -327,7 +391,8 @@
             style="background-image: linear-gradient( rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto services-grid">
                     <div class="group relative h-100 rounded-xl overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                             style="background-image: url('image/web.jpeg');">
@@ -408,41 +473,78 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Projects</h2>
             </div>
             <div class="card-section flex flex-wrap gap-8 justify-center">
-                <div class="card1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                <div
+                    class="card4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
+                        <img src="image/portfilio1.png" alt="result calculator"
+                            class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <h3 class="text-xl font-bold pb-1 pl-2">My Portfolio</h3>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-2 mt-3 mb-3">HTML</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs mr-2"> Tailwind CSS</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">JavaScript</button>
+                        <br><button
+                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="https://mdeibrahim.github.io/Portfolio_1/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="card1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
                     <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
                         <img src="image/food.png" alt="food" class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
-                        <h3 class="text-xl font-bold pb-8">Restaurant Foods & Drinks</h3>
-                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <h3 class="text-lg font-bold pb-1 pl-2">Restaurant Foods & Drinks</h3>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-2 mt-3 mb-3">HTML</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs mr-2"> CSS3</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">JavaScript</button>
+                        <br><button
+                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
                             <a href="https://mdeibrahim.github.io/Rastaurent/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
                         </button>
                     </div>
                 </div>
 
-                <div class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                <div
+                    class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
                     <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
-                        <img src="image/result.png" alt="result calculator" class="w-full h-full object-cover rounded-lg">
+                        <img src="image/result.png" alt="result calculator"
+                            class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
-                        <h3 class="text-xl font-bold pb-8">Grade Calculator</h3>
-                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <h3 class="text-xl font-bold pb-1 pl-2">Grade Calculator</h3>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1 mt-3 mb-3">HTML</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1"> CSS3 </button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1">JavaScript</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">API</button>
+                        <br><button
+                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
                             <a href="https://mdeibrahim.github.io/Result_calculator/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
                         </button>
                     </div>
                 </div>
 
-                <div class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                <div
+                    class="card3 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
                     <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
-                        <img src="image/loading.png" alt="result calculator" class="w-full h-full object-cover rounded-lg">
+                        <img src="image/loading.png" alt="result calculator"
+                            class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
-                        <h3 class="text-xl font-bold pb-8">Full Stack Project</h3>
-                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
-                            <a href="#" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <h3 class="text-xl font-bold pb-1 pl-2">Full Stack Project</h3>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1 mt-3 mb-3">Python</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1"> Django</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-">Postgre</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">OOP</button>
+                        <br><button
+                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="https://mdeibrahim.github.io/Portfolio_1/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
                         </button>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -453,7 +555,7 @@
             <div class="container mx-auto px-3 md:px-6 relative z-10">
 
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">GET IN TOUCH</h2>
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 contact-grid">
                     <div class="space-y-8 bg-black/50 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center">
