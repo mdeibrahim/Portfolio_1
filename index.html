@@ -27,13 +27,23 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .text-gradient {
-                @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+                background: linear-gradient(to right, #ff01bb, #FE7743);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
             }
             .bg-gradient {
-                @apply bg-gradient-to-r from-primary to-secondary;
+                background: linear-gradient(to right, #ff01bb, #FE7743);
             }
             .bg-overlay {
-                @apply relative before:absolute before:inset-0 before:bg-black/80 before:z-0;
+                position: relative;
+            }
+            .bg-overlay::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 0;
             }
         }
 
@@ -106,21 +116,29 @@
     <header>
         <nav class="fixed top-0 left-0 w-full bg-black/90 backdrop-blur-md z-50">
             <div class="container mx-auto px-3 md:px-6 py-2 md:py-3 flex justify-between items-center">
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
-                    <img class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" src="image/logo.jpg" alt="Logo">
-            </div>
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden shadow-lg shadow-pink-500/50 hover:scale-110">
+                    <img class="w-full h-full object-cover  transition-transform duration-300"
+                        src="image/logo.jpg" alt="Logo">
+                </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <ul class="flex items-center border border-gray-600 rounded-full px-8 py-3 space-x-8">
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="home">Home</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="about">About</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="Academic">Academic</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="skills">Skills</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="services">Services</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="projects">Projects</li>
-                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all" data-section="contact">Contact</li>
-                </ul>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="home">Home</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="about">About</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="Academic">Academic</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="skills">Skills</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="services">Services</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="projects">Projects</li>
+                        <li class="nav-item cursor-pointer hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-secondary hover:after:w-full after:transition-all"
+                            data-section="contact">Contact</li>
+                    </ul>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -141,70 +159,84 @@
                 </button>
             </div>
             <ul class="space-y-6">
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="home">Home</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="about">About</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="Academic">Academic</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="skills">Skills</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="services">Services</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="projects">Projects</li>
-                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="contact">Contact</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="home">
+                    Home</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="about">
+                    About</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors"
+                    data-section="Academic">Academic</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="skills">
+                    Skills</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors"
+                    data-section="services">Services</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors"
+                    data-section="projects">Projects</li>
+                <li class="nav-item cursor-pointer text-lg hover:text-primary transition-colors" data-section="contact">
+                    Contact</li>
             </ul>
         </div>
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu-overlay"></div>
 
-        <section id="home" class="min-h-screen flex items-center justify-between px-3 md:px-6 py-16 md:py-24 bg-cover bg-center bg-fixed" 
-                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image/bg_banner.png');">
+        <section id="home"
+            class="min-h-screen flex items-center justify-between px-3 md:px-6 py-16 md:py-24 bg-cover bg-center bg-fixed"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image/bg_banner.png');">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
                 <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gradient" id="typewriter-name">Md Eibrahim Molla</h1>
                     <h4 class="text-2xl md:text-3xl font-semibold mb-4 text-secondary">Full Stack Developer</h4>
-                    <p class="text-gray-300 mb-8">I'm a passionate developer with expertise in Python, Django, and modern web
+                    <p class="text-gray-300 mb-8">I'm a passionate developer with expertise in Python, Django, and
+                        modern web
                         technologies. I love creating efficient, scalable solutions and solving complex problems.</p>
                     <div class="flex gap-4 mb-6">
-                        <a href="https://github.com/mdeibrahim" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://github.com/mdeibrahim" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://twitter.com/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-facebook"></i>
                         </a>
                     </div>
                     <div class="flex gap-4">
                         <a href="documents/Md_Eibrahim_CV.pdf" download="Eibrahim's_CV.pdf"
-                           class="bg-gradient text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity">
+                            class="border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
                             <i class="fas fa-download mr-2"></i> Download CV
                         </a>
-                        <a href="mailto:s21502003689@nu.ac.bd" 
-                           class="border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
+                        <a href="mailto:s21502003689@nu.ac.bd"
+                            class="border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
                             <i class="fas fa-envelope mr-2"></i> Email
                         </a>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 animate__animated animate__fadeInRight">
                     <div class="relative w-96 h-96 mx-auto">
-                        <img class="w-full h-full object-cover rounded-full border-4 border-white/10 shadow-lg shadow-primary/30 hover:scale-105 transition-transform duration-300" 
-                             src="image/profile.png" alt="profile photo">
-            </div>
+                        <img class="w-full h-full object-cover rounded-full border-4 border-white/10 shadow-lg shadow-primary/30 hover:scale-105 transition-transform duration-300"
+                            src="image/profile.png" alt="profile photo">
+                    </div>
                 </div>
             </div>
         </section>
     </header>
 
     <main>
-        <section id="about" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
-                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+        <section id="about" class="section-padding bg-cover bg-center bg-fixed bg-overlay"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">About Me</h2>
                 <div class="max-w-4xl mx-auto">
                     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                        <p class="text-gray-200 mb-8 text-lg">I am a dedicated Full Stack Developer with a strong foundation in both front-end and back-end
+                        <p class="text-gray-200 mb-8 text-lg">I am a dedicated Full Stack Developer with a strong
+                            foundation in both front-end and back-end
                             technologies. My journey in software development has equipped me with the skills to create
                             robust, scalable applications.</p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -220,19 +252,20 @@
                                 <span class="block text-3xl font-bold text-primary mb-2">30+</span>
                                 <span class="text-gray-300">Happy Clients</span>
                             </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
-                 style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+        <section id="skills" class="section-padding bg-cover bg-center bg-fixed bg-overlay"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Technologies</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
                     <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
-                        <h4 class="text-sm mb-4 text-white">Front End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
+                        <h4 class="text-sm mb-4 text-white">Front End &nbsp;&nbsp;&nbsp;&nbsp; <i
+                                class="fas fa-arrow-right text-primary"></i></h4>
                         <div class="grid grid-cols-4 gap-4 mb-6">
                             <div class="text-center">
                                 <img src="https://skillicons.dev/icons?i=html" alt="HTML5" class="w-12 h-12 mx-auto">
@@ -251,17 +284,20 @@
                                 <p class="text-xs text-gray-300 mt-2">React</p>
                             </div>
                             <div class="text-center">
-                                <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap" class="w-12 h-12 mx-auto">
+                                <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap"
+                                    class="w-12 h-12 mx-auto">
                                 <p class="text-xs text-gray-300 mt-2">Bootstrap</p>
-                    </div>
+                            </div>
                             <div class="text-center">
-                                <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind" class="w-12 h-12 mx-auto">
+                                <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"
+                                    class="w-12 h-12 mx-auto">
                                 <p class="text-xs text-gray-300 mt-2">Tailwind</p>
-                    </div>
-                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="bg-white/0 border rounded-xl p-6 hover:shadow-xl transition-shadow">
-                        <h4 class="text-sm mb-4 text-white">Back End &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-right text-primary"></i></h4>
+                        <h4 class="text-sm mb-4 text-white">Back End &nbsp;&nbsp;&nbsp;&nbsp; <i
+                                class="fas fa-arrow-right text-primary"></i></h4>
                         <div class="grid grid-cols-4 gap-4 mb-6">
                             <div class="text-center">
                                 <img src="https://skillicons.dev/icons?i=python" alt="Python" class="w-12 h-12 mx-auto">
@@ -272,27 +308,29 @@
                                 <p class="text-xs text-gray-300 mt-2">Django</p>
                             </div>
                             <div class="text-center">
-                                <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" class="w-12 h-12 mx-auto">
+                                <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js"
+                                    class="w-12 h-12 mx-auto">
                                 <p class="text-xs text-gray-300 mt-2">Node</p>
                             </div>
                             <div class="text-center">
-                                <img src="https://skillicons.dev/icons?i=postgresql" alt="postgresql" class="w-12 h-12 mx-auto">
+                                <img src="https://skillicons.dev/icons?i=postgresql" alt="postgresql"
+                                    class="w-12 h-12 mx-auto">
                                 <p class="text-xs text-gray-300 mt-2">postgre</p>
-                    </div>
-                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
-                 style="background-image: linear-gradient( rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+        <section id="services" class="section-padding bg-cover bg-center bg-fixed bg-overlay"
+            style="background-image: linear-gradient( rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Services</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
                     <div class="group relative h-100 rounded-xl overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
-                             style="background-image: url('image/web.jpeg');">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            style="background-image: url('image/web.jpeg');">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
                             <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -300,31 +338,34 @@
                                 <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                                     Creating responsive, modern websites with clean code and optimal performance.
                                 </p>
-                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <button
+                                    class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                                     Learn More <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="group relative h-80 rounded-xl overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
-                             style="background-image: url('image/python.jpg');">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            style="background-image: url('image/python.jpg');">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
                             <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                                 <h3 class="text-2xl font-bold mb-8">Python Development</h3>
                                 <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
-                                    Building robust Python applications, automation scripts, and data analysis solutions.
+                                    Building robust Python applications, automation scripts, and data analysis
+                                    solutions.
                                 </p>
-                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <button
+                                    class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                                     Learn More <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="group relative h-80 rounded-xl overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
-                             style="background-image: url('image/django.jpg');">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            style="background-image: url('image/django.jpg');">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
                             <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -332,15 +373,16 @@
                                 <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                                     Developing scalable web applications using Django framework with best practices.
                                 </p>
-                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <button
+                                    class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                                     Learn More <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="group relative h-80 rounded-xl overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
-                             style="background-image: url('image/soft.jpg');">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            style="background-image: url('image/soft.jpg');">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
                             <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -348,7 +390,8 @@
                                 <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-4">
                                     Creating custom software solutions tailored to your business needs.
                                 </p>
-                                <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <button
+                                    class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                                     Learn More <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
@@ -358,70 +401,57 @@
             </div>
         </section>
 
-        <section id="projects" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
-                 style="background-image: url('image/project_bg2.jpg');">
+        <section id="projects" class="section-padding bg-cover bg-center bg-fixed bg-overlay p-8"
+            style="background-image: url('image/project_bg2.jpg');">
+
             <div class="container mx-auto px-3 md:px-6 relative z-10">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
-                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/restaurant.jpg');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                <h3 class="text-2xl font-bold mb-4">Restaurant Management</h3>
-                                <p class="mb-4">A comprehensive system for managing restaurant operations including orders, inventory, and staff.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">SQLite</span>
-                                </div>
-                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
-                                    View Project
-                                </button>
-                            </div>
-                        </div>
+            </div>
+            <div class="card-section flex flex-wrap gap-8 justify-center">
+                <div class="card1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
+                        <img src="image/food.png" alt="food" class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/ride.jpg');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                <h3 class="text-2xl font-bold mb-4">Ride Sharing</h3>
-                                <p class="mb-4">A platform connecting drivers with passengers for efficient transportation solutions.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">PostgreSQL</span>
-                                </div>
-                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
-                                    View Project
-                                </button>
-                            </div>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
+                        <h3 class="text-xl font-bold pb-8">Restaurant Foods & Drinks</h3>
+                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="https://mdeibrahim.github.io/Rastaurent/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                        </button>
+                    </div>
                 </div>
+
+                <div class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
+                        <img src="image/result.png" alt="result calculator" class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="group relative h-96 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/school_manage.webp');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                <h3 class="text-2xl font-bold mb-4">School Management</h3>
-                                <p class="mb-4">Complete system for managing student records, grades, and school administration.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Python</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">Django</span>
-                                    <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">MySQL</span>
-                                </div>
-                                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
-                                    View Project
-                                </button>
-                            </div>
-                        </div>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
+                        <h3 class="text-xl font-bold pb-8">Grade Calculator</h3>
+                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="https://mdeibrahim.github.io/Result_calculator/" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
+                        <img src="image/loading.png" alt="result calculator" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-6  text-white">
+                        <h3 class="text-xl font-bold pb-8">Full Stack Project</h3>
+                        <button class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="#" target="_blank">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section-padding bg-cover bg-center bg-fixed bg-overlay" 
-        style="background-image: linear-gradient(rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
+
+
+        <section id="contact" class="section-padding bg-cover bg-center bg-fixed bg-overlay"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.1)), url('image/project_bg2.jpg');">
             <div class="container mx-auto px-3 md:px-6 relative z-10">
-            
+
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">GET IN TOUCH</h2>
                 <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <div class="space-y-8 bg-black/50 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
@@ -476,7 +506,7 @@
                                 Send Message <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </section>
@@ -487,18 +517,23 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold text-gradient">Md Eibrahim Molla</h3>
-                    <p class="text-gray-400">Full Stack Developer passionate about creating efficient and scalable solutions.</p>
+                    <p class="text-gray-400">Full Stack Developer passionate about creating efficient and scalable
+                        solutions.</p>
                     <div class="flex space-x-4">
-                        <a href="https://github.com/mdeibrahim" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://github.com/mdeibrahim" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://linkedin.com/in/md-eibrahim11/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://twitter.com/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                        <a href="https://facebook.com/md.eibrahim.52035" target="_blank"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
                             <i class="fab fa-facebook"></i>
                         </a>
                     </div>
@@ -509,9 +544,12 @@
                         <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
                         <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
                         <li><a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
-                        <li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a>
+                        </li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a>
+                        </li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>
