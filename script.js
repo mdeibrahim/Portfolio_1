@@ -37,53 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!mobileMenu) console.error("Mobile menu element (mobile-menu) not found!");
     if (!mobileMenuOverlay) console.error("Mobile menu overlay (mobile-menu-overlay) not found!");
 
-    // Function to open mobile menu
-    function openMobileMenu() {
-        if (!mobileMenu || !mobileMenuOverlay) {
-            console.error("Cannot open mobile menu - critical elements missing.");
-            return;
-        }
-        console.log('Attempting to open menu...');
-        mobileMenu.style.transform = 'translateX(0)';
-        mobileMenuOverlay.style.opacity = '1';
-        mobileMenuOverlay.style.pointerEvents = 'auto';
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     }
 
-    // Function to close mobile menu
-    function closeMobileMenu() {
-        if (!mobileMenu || !mobileMenuOverlay) {
-            console.error("Cannot close mobile menu - critical elements missing.");
-            return;
-        }
-        console.log('Attempting to close menu...');
-        mobileMenu.style.transform = 'translateX(100%)';
-        mobileMenuOverlay.style.opacity = '0';
-        mobileMenuOverlay.style.pointerEvents = 'none';
-        document.body.style.overflow = ''; // Restore background scroll
-    }
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    closeMenuButton.addEventListener('click', toggleMobileMenu);
+    mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
 
-    // Add click event listeners for menu buttons and overlay
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function(e) {
-            e.preventDefault(); // Good practice for buttons
-            openMobileMenu();
+    // Close mobile menu when clicking on a nav item
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
-    }
-
-    if (closeMenuButton) {
-        closeMenuButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMobileMenu();
-        });
-    }
-
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMobileMenu();
-        });
-    }
+    });
 
     // Smooth scrolling for ALL navigation items (desktop and mobile)
     // AND close mobile menu if a mobile nav item is clicked
@@ -109,13 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // If the click originated from an item within the open mobile menu, close the menu.
                 if (isClickInsideOpenMobileMenu) {
-                    closeMobileMenu();
+                    toggleMobileMenu();
                 }
             } else {
                 // If it's not a section link (no targetElement), but the click is inside an open mobile menu
                 // (e.g., a hypothetical external link in the mobile menu), still close the menu.
                 if (isClickInsideOpenMobileMenu) {
-                    closeMobileMenu();
+                    toggleMobileMenu();
                 }
             }
         });

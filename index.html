@@ -60,6 +60,11 @@
             transition: transform 0.3s ease-in-out;
             z-index: 1000;
             padding: 1.5rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
         }
 
         #mobile-menu-overlay {
@@ -71,6 +76,11 @@
             pointer-events: none;
             transition: opacity 0.3s ease-in-out;
             z-index: 999;
+        }
+
+        #mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         /* Custom Media Queries */
@@ -151,7 +161,10 @@
         /* Additional Responsive Fixes */
         @media (max-width: 768px) {
             .nav-menu {
-                padding: 0.5rem;
+                display: none;
+            }
+            #mobile-menu-button {
+                display: block;
             }
             #home .flex-col {
                 gap: 2rem;
@@ -167,6 +180,12 @@
             }
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #mobile-menu-button {
+                display: none;
             }
         }
     </style>
@@ -373,6 +392,10 @@
                                 <p class="text-xs text-gray-300 mt-2">Django</p>
                             </div>
                             <div class="text-center">
+                                <img src="image/rest1.png" alt="Rest Framework" class="w-12 h-12 mx-auto">
+                                <p class="text-xs text-gray-300 mt-2">REST API</p>
+                            </div>
+                            <div class="text-center">
                                 <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js"
                                     class="w-12 h-12 mx-auto">
                                 <p class="text-xs text-gray-300 mt-2">Node</p>
@@ -474,29 +497,30 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gradient">My Projects</h2>
             </div>
             <div class="card-section flex flex-wrap gap-8 justify-center">
-                <div
-                    class="card4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
-                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
-                        <img src="image/portfilio1.png" alt="result calculator"
-                            class="w-full h-full object-cover rounded-lg">
+                <div class="card4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] border-2 border-white/5 rounded-lg h-96 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-full h-60 p-2 pt-6">
+                        <img src="image/portfilio1.png" alt="portfolio" class="w-full h-full object-cover rounded-lg">
                     </div>
-                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
-                        <h3 class="text-xl font-bold pb-1 pl-2">My Portfolio</h3>
-                        <button
-                            class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-2 mt-3 mb-3">HTML</button>
-                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs mr-2"> Tailwind
-                            CSS</button>
-                        <button
-                            class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">JavaScript</button>
-                        <br><button
-                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
-                            <a href="https://mdeibrahim.github.io/Portfolio_1/" target="_blank">View Project <i
-                                    class="fas fa-arrow-right ml-2"></i></a>
-                        </button>
+                    <div class="card-content p-4 text-white">
+                        <h3 class="text-xl font-bold pb-2">My Portfolio</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">HTML</span>
+                            <span class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">Tailwind CSS</span>
+                            <span class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">JavaScript</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="https://mdeibrahim.github.io/Portfolio_1/" target="_blank" 
+                               class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50 hover:text-white transition-colors">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/mdeibrahim/Portfolio_1" target="_blank"
+                               class="w-10 h-10 border-2 border-white/10 rounded-full text-primary flex items-center justify-center hover:bg-primary/50 hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div
-                    class="card1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                <div class="card1 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
                     <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
                         <img src="image/food.png" alt="food" class="w-full h-full object-cover rounded-lg">
                     </div>
@@ -536,6 +560,35 @@
                             <a href="https://mdeibrahim.github.io/Result_calculator/" target="_blank">View Project <i
                                     class="fas fa-arrow-right ml-2"></i></a>
                         </button>
+                    </div>
+                </div>
+
+                <div
+                    class="card2 w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] border-2 border-white/5 rounded-lg h-80 relative overflow-hidden hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="card-image w-100% h-100% p-2 pt-6 rounded-full">
+                        <img src="image/ems.png" alt="result calculator"
+                            class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="card-content absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <h3 class="text-lg font-bold pb-1 pl-2">Employee Management System</h3>
+                        <button
+                            class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1 mt-3 mb-3">Django</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1"> Rest API</button>
+                        <button
+                            class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs m-1">Python</button>
+                        <button class="border-2 border-white/10 rounded-lg px-2 py-1 font-light text-xs">API</button>
+                        <br>
+                        <div class="flex justify-between">
+                            <button
+                            class="border-2 border-white/10 text-primary px-4 py-2 rounded-full hover:bg-primary/50  hover:text-white transition-colors">
+                            <a href="https://github.com/mdeibrahim/Employee_management_System" target="_blank">View Project <i
+                                    class="fas fa-arrow-right ml-2"></i></a>
+                        </button>
+                        <a href="https://github.com/mdeibrahim/Employee_management_System" target="_blank"
+                            class="w-10 h-10 border-2 border-white/10 rounded-full text-primary flex items-center justify-center hover:bg-primary/50 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        </div>
                     </div>
                 </div>
 
