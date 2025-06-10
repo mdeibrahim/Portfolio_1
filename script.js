@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else {
                 // If it's not a section link (no targetElement), but the click is inside an open mobile menu
-                // (e.g., a hypothetical external link in the mobile menu), still close the menu.
+                
                 if (isClickInsideOpenMobileMenu) {
                     toggleMobileMenu();
                 }
@@ -100,18 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowHeight = window.innerHeight;
             
             if (elementPosition < windowHeight - 100) { // Adjust offset as needed
-                // Add animation classes; assumes initial classes are like 'animate__fadeInLeft' but not yet active
-                // This part of your original script might need adjustment if animations aren't triggering as expected.
-                // The original logic was:
-                // element.classList.forEach(cls => {
-                //     if (cls.startsWith('animate__') && cls !== 'animate__animated') {
-                //         element.classList.add(cls); // This re-adds existing classes, effectively trying to restart animation.
-                //     }
-                // });
-                // A common pattern is to add a class like 'animate__active' or ensure the animation class is added once.
-                // For Animate.css, simply ensuring the element has 'animate__animated' and 'animate__fadeInLeft' (for example)
-                // and then becomes visible should trigger it. If you want to re-trigger, you might need to remove and re-add classes.
-                // For simplicity, let's assume the classes are on the element and Animate.css handles visibility.
+                // Add animation classes; assumes initial classes are like 
             }
         });
     };
@@ -130,15 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const cardPosition = card.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 
-                if (cardPosition < windowHeight - 50) { // Adjust offset
-                    // The original script had: progress.style.width = progress.style.width;
-                    // This doesn't actually change anything. You need to set it to its target width.
-                    // Assuming the target width is already set in the HTML style attribute.
-                    // To animate it with JS, you'd typically read a data-width attribute and set it.
-                    // For now, if HTML 'style="width: XX%"' is set, it should be fine.
-                    // If you want JS to trigger an animation, you'd do something like:
-                    // const targetWidth = progressElement.getAttribute('data-target-width') || '0%';
-                    // progressElement.style.width = targetWidth;
+                if (cardPosition < windowHeight - 50) { 
                 }
             }
         });
